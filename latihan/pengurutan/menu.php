@@ -7,7 +7,7 @@ $coba = true;
 
 while ($coba) {
     $input = new input();
-    echo "Masukan Jumlah Nilai Yang Akan Di Urutkan : ";
+    echo "Masukan Jumlah Nilai Yang Akan Di Urutkan (1-n): ";
     $jml = $input->read_stdin();
     if (filter_var($jml, FILTER_VALIDATE_INT)) {
         $data = array();
@@ -34,7 +34,7 @@ while ($coba) {
     } else {
             echo "Nilai Masukan Salah".PHP_EOL;
     }
-    echo "Coba Lagi ? Press Y untuk melanjutkan : ";
+    echo "Coba Lagi ? Press Y untuk melanjutkan (Y/y) : ";
     $pilih = $input->read_stdin();
 
     if (!strcasecmp( $pilih, 'y' ) == 0 || !strcasecmp( $pilih, 'Y' ) == 0) {
