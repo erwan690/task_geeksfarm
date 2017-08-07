@@ -25,9 +25,11 @@ while ($coba) {
         $new_file_name = basename($url);
 
         $temp_file_contents = $cdown->collect_file($url);
-        $log = $cdown->write_to_file($temp_file_contents, $new_file_name);
+        $cdown->write_to_file($temp_file_contents, $new_file_name);
     // end loop here
         echo "Saved In same Directory with this script as $new_file_name".PHP_EOL;
+    } else {
+        echo "Format Url Yang Anda Masukan Salah !!!".PHP_EOL;
     }
     echo "Coba Lagi ? Press Y untuk melanjutkan : ";
     $pilih = $input->read_stdin();
