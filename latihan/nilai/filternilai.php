@@ -19,7 +19,7 @@ class filternilai
             case $nilai >= 30 && $nilai < 45:
                 $inilai = "D";
                 break;
-            case $nilai <= 30:
+            case $nilai < 30:
                 $inilai = "E";
                 break;
             
