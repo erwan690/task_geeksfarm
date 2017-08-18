@@ -26,10 +26,11 @@ while ($menu) {
     echo "# ======================== #".PHP_EOL;
     echo "  Options (1-3) :";
     $option1 = $input->read_stdin();
-
+    system('clear');
     if (strcasecmp( $option1, '1' ) == 0) {
         echo "  Please Insert New Name : ";
         $name = strtolower($input->read_stdin());
+        system('clear');
         if ($validasi->validnama($allplayer, $name)) {
             $player->set_nama($name);
             $allplayer []= array( 'name'=>$name,
@@ -50,6 +51,8 @@ while ($menu) {
             echo " Blood = ".$value['blood'].PHP_EOL;
             $j++;
         }
+        $input->read_stdin();
+        system('clear');
     } elseif (strcasecmp( $option1, '3' ) == 0) {
         $jmldata=count($allplayer);
         if ($jmldata > 1) {
