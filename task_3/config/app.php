@@ -12,7 +12,7 @@ return [
     | any other location as required by the application or its packages.
     */
 
-    'name' => 'Laravel',
+    'name' => 'Task_3',
 
     /*
     |--------------------------------------------------------------------------
@@ -166,6 +166,10 @@ return [
         /*
          * Package Service Providers...
          */
+         Sven\ArtisanView\ArtisanViewServiceProvider::class,
+         Collective\Html\HtmlServiceProvider::class,
+         Laratrust\LaratrustServiceProvider::class,
+         Yajra\Datatables\DatatablesServiceProvider::class,
 
         //
 
@@ -225,6 +229,9 @@ return [
         'URL' => Illuminate\Support\Facades\URL::class,
         'Validator' => Illuminate\Support\Facades\Validator::class,
         'View' => Illuminate\Support\Facades\View::class,
+        'Form' => Collective\Html\FormFacade::class,
+        'Html' => Collective\Html\HtmlFacade::class,
+        'Laratrust'   => Laratrust\LaratrustFacade::class,
 
     ],
 
