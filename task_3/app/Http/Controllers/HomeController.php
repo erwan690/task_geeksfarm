@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
+//use App\User;
 
 class HomeController extends Controller
 {
@@ -21,8 +22,14 @@ class HomeController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function index()
+    public function index(Request $request)
     {
+        $request->user()->authorizeRoles(['employee', 'manager']);
         return view('home');
+    }
+    public function employe(Request $request)
+    {
+        $request->user()->authorizeRoles(['employee']);
+        return view('welcome');
     }
 }
