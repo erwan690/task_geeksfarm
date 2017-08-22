@@ -24,12 +24,20 @@ class HomeController extends Controller
      */
     public function index(Request $request)
     {
-        $request->user()->authorizeRoles(['employee', 'manager']);
-        return view('home');
+        if($request->user()->authorizeRoles(['employee', 'manager']))
+        {
+          return view('home');
+        }
+
     }
     public function employe(Request $request)
     {
-        $request->user()->authorizeRoles(['employee']);
+      if($request->user()->authorizeRoles(['manager']))
+      {
         return view('welcome');
+      }
+      else {
+        return redirect()->route('login');
+      }
     }
 }
