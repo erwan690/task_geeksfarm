@@ -11,7 +11,8 @@
     <title>{{ config('app.name', 'Laravel') }}</title>
 
     <!-- Styles -->
-    <link href="{{ asset('css/app.css') }}" rel="stylesheet">
+    <link href="{{ asset('assets/startmin/css/bootstrap.min.css') }}" rel="stylesheet">
+
 </head>
 <body>
     <div id="app">
@@ -75,6 +76,7 @@
     </div>
 
     <!-- Scripts -->
-    <script src="{{ asset('js/app.js') }}"></script>
+    <script src="{{ asset('assets/startmin/js/jquery.min.js') }}"></script>
+    <script src="{{ asset('assets/startmin/js/bootstrap.min.js') }}"></script>
 </body>
 </html>

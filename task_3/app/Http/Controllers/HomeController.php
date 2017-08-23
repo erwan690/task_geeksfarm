@@ -24,8 +24,11 @@ class HomeController extends Controller
      */
     public function index(Request $request)
     {
-        if($request->user()->authorizeRoles(['employee', 'manager']))
+        if($request->user()->authorizeRoles(['manager']))
         {
+          return view('admin.index');
+        }
+        else {
           return view('home');
         }
 
