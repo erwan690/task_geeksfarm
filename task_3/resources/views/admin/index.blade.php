@@ -15,6 +15,12 @@
     <!-- MetisMenu CSS -->
     <link href="{{asset('assets/startmin/css/metisMenu.min.css')}}" rel="stylesheet">
 
+    <!-- DataTables CSS -->
+    <link href="{{asset('assets/startmin/css/dataTables/dataTables.bootstrap.css')}}" rel="stylesheet">
+
+    <!-- DataTables Responsive CSS -->
+    <link href="{{asset('assets/startmin/css/dataTables/dataTables.responsive.css')}}" rel="stylesheet">
+
     <!-- Timeline CSS -->
     <link href="{{asset('assets/startmin/css/timeline.css')}}" rel="stylesheet">
 
@@ -40,25 +46,23 @@
     @include('admin.header')
     @include('admin.sidebar')
     <!-- Page Content -->
-     <div id="page-wrapper">
-         <div class="container-fluid">
+    <div id="page-wrapper">
+       <div class="container-fluid">
+           @yield('pagecontent')
+   </div>
 
-             <div class="row">
-                 <div class="col-lg-12">
-                     <h1 class="page-header">Page Title</h1>
-                 </div>
-             </div>
-
-             <!-- ... Your content goes here ... -->
-
-         </div>
-     </div>
 
  </div>
-
+    <!-- jQuery -->
     <script src="{{ asset('assets/startmin/js/jquery.min.js') }}"></script>
+    <!-- Bootstrap Core JavaScript -->
     <script src="{{ asset('assets/startmin/js/bootstrap.min.js') }}"></script>
+    <!-- Metis Menu Plugin JavaScript -->
     <script src="{{ asset('assets/startmin/js/metisMenu.min.js') }}"></script>
+    <!-- DataTables JavaScript -->
+    <script src="{{ asset('assets/startmin/js/dataTables/jquery.dataTables.min.js') }}"></script>
+    <script src="{{ asset('assets/startmin/js/dataTables/dataTables.bootstrap.min.js') }}"></script>
+     <!-- Custom Theme JavaScript -->
     <script src="{{ asset('assets/startmin/js/startmin.js') }}"></script>
   </body>
 </html>

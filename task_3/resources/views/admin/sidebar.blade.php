@@ -3,7 +3,7 @@
     <div class="sidebar-nav navbar-collapse">
 
         <ul class="nav" id="side-menu">
-            <li class="sidebar-search">
+            {{-- <li class="sidebar-search">
                 <div class="input-group custom-search-form">
                     <input type="text" class="form-control" placeholder="Search...">
                         <span class="input-group-btn">
@@ -12,9 +12,9 @@
                             </button>
                         </span>
                 </div>
-            </li>
+            </li> --}}
             <li>
-                <a href="#" class="active"><i class="fa fa-dashboard fa-fw"></i> Dashboard</a>
+                <a href="{{ route('user.index') }}" class="active"><i class="fa fa fa-users fa-fw"></i> List User</a>
             </li>
             <li>
                 <a href="#"><i class="fa fa-sitemap fa-fw"></i> Multi-Level Dropdown<span class="fa arrow"></span></a>
