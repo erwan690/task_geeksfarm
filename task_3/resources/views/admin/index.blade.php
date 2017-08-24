@@ -15,12 +15,7 @@
     <!-- MetisMenu CSS -->
     <link href="{{asset('assets/startmin/css/metisMenu.min.css')}}" rel="stylesheet">
 
-    <!-- DataTables CSS -->
-    <link href="{{asset('assets/startmin/css/dataTables/dataTables.bootstrap.css')}}" rel="stylesheet">
-
-    <!-- DataTables Responsive CSS -->
-    <link href="{{asset('assets/startmin/css/dataTables/dataTables.responsive.css')}}" rel="stylesheet">
-
+    @yield('style')
     <!-- Timeline CSS -->
     <link href="{{asset('assets/startmin/css/timeline.css')}}" rel="stylesheet">
 
@@ -59,9 +54,7 @@
     <script src="{{ asset('assets/startmin/js/bootstrap.min.js') }}"></script>
     <!-- Metis Menu Plugin JavaScript -->
     <script src="{{ asset('assets/startmin/js/metisMenu.min.js') }}"></script>
-    <!-- DataTables JavaScript -->
-    <script src="{{ asset('assets/startmin/js/dataTables/jquery.dataTables.min.js') }}"></script>
-    <script src="{{ asset('assets/startmin/js/dataTables/dataTables.bootstrap.min.js') }}"></script>
+    @yield('script')
      <!-- Custom Theme JavaScript -->
     <script src="{{ asset('assets/startmin/js/startmin.js') }}"></script>
   </body>

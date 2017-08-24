@@ -34,9 +34,3 @@ $(function() {
         element.addClass('active');
     }
 });
-
-$(document).ready(function() {
-                $('#dataTables-example').DataTable({
-                        responsive: true
-                });
-            });

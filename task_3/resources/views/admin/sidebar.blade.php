@@ -16,7 +16,7 @@
             <li>
                 <a href="{{ route('user.index') }}" class="active"><i class="fa fa fa-users fa-fw"></i> List User</a>
             </li>
-            <li>
+            {{-- <li>
                 <a href="#"><i class="fa fa-sitemap fa-fw"></i> Multi-Level Dropdown<span class="fa arrow"></span></a>
                 <ul class="nav nav-second-level">
                     <li>
@@ -31,7 +31,7 @@
                         </ul>
                     </li>
                 </ul>
-            </li>
+            </li> --}}
         </ul>
 
     </div>
