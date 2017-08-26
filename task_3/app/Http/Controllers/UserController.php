@@ -107,7 +107,7 @@ class UserController extends Controller {
 		//
 		//dd($user);
 		User::destroy($user->id);
-		$user->roles()->detach(Role::where('name', $user->roles)->first());
+		$user->roles()->detach();
 		return redirect()->route('user.index');
 	}
 }
