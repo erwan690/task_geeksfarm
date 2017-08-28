@@ -24,9 +24,14 @@ class UserController extends Controller {
 	 */
 	public function index(Request $request) {
 		//
+		if ($request->user()->authorizeRoles(['manager'])) {
 		$users = User::with('roles')->paginate(2);
 		$roles = Role::all('name');
 		return view('admin.user')->with(compact('users','roles'));
+	}
+	else {
+		return redirect()->route('home')->with('messages', 'Anda Tidak Berhak Mengakses module ini');
+	}
 
 	}
 
@@ -49,6 +54,7 @@ class UserController extends Controller {
 	public function store(Request $request) {
 		//
 		// dd($request->roles);
+		if ($request->user()->authorizeRoles(['manager'])) {
 		$data = $this->validate($request,['name' => 'required|string|min:4|max:255',
 		'email' => 'required|string|email|max:255|unique:users',
 		'password' => 'required|string|min:6|regex:/^(?=\S*[a-z])(?=\S*[A-Z])(?=\S*[\d])\S*$/|confirmed',
@@ -61,9 +67,12 @@ class UserController extends Controller {
       'password' => bcrypt($request->password),
     ]);
     $user->roles()->attach(Role::where('name', $request->roles)->first());
-		$user->id;
 
 		return redirect()->route('user.index');
+	}
+		else {
+			return redirect()->route('home')->with('gagal', 'Anda Tidak Berhak Mengakses module ini');
+		}
 	}
 
 	/**
@@ -84,6 +93,7 @@ class UserController extends Controller {
 	 */
 	public function edit(User $user) {
 		//
+		return $user->toJson();
 	}
 
 	/**
@@ -106,8 +116,13 @@ class UserController extends Controller {
 	public function destroy(User $user) {
 		//
 		//dd($user);
+		if ($request->user()->authorizeRoles(['manager'])) {
 		User::destroy($user->id);
 		$user->roles()->detach();
-		return redirect()->route('user.index');
+		return redirect()->route('user.index');}
+		else {
+			return redirect()->route('home')->with('gagal', 'Anda Tidak Berhak Mengakses module ini');
+		}
+
 	}
 }

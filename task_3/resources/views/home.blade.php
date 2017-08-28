@@ -1,6 +1,14 @@
 @extends('layouts.app')
 
 @section('content')
+  @if(session('messages'))
+  <div class="alert alert-danger text-center" ><strong>Danger!</strong>{{session('messages')}} </div>
+@endif
+
+
+
+    </div>
+
 <div class="container">
     <div class="row">
         <div class="col-md-8 col-md-offset-2">
