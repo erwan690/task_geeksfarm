@@ -23,8 +23,16 @@ class UserController extends Controller {
 	 * @return \Illuminate\Http\Response
 	 */
 	public function index(Request $request) {
+
+		//dd($request);
+
+		if ($request->ajax()) {
+			 $hasil = User::where('name',$request->keyword)->orWhere('name', 'like','%'.$request->keyword.'%')->get();
+
+		}
 		//
 		if ($request->user()->authorizeRoles(['manager'])) {
+
 		$users = User::with('roles')->paginate(2);
 		$roles = Role::all('name');
 		return view('admin.user')->with(compact('users','roles'));
@@ -61,6 +69,9 @@ class UserController extends Controller {
 		],$messages = [
 		'password.regex' => 'Password must contain at least one number and both uppercase and lowercase letters!',
 		]);
+		if (!$data) {
+			return $data;
+		}
 		$user = User::create([
       'name' => $request->name,
       'email' => $request->email,
@@ -93,6 +104,7 @@ class UserController extends Controller {
 	 */
 	public function edit(User $user) {
 		//
+
 		return $user->toJson();
 	}
 
@@ -116,13 +128,11 @@ class UserController extends Controller {
 	public function destroy(User $user) {
 		//
 		//dd($user);
-		if ($request->user()->authorizeRoles(['manager'])) {
+
 		User::destroy($user->id);
 		$user->roles()->detach();
-		return redirect()->route('user.index');}
-		else {
-			return redirect()->route('home')->with('gagal', 'Anda Tidak Berhak Mengakses module ini');
-		}
+		return redirect()->route('user.index');
+
 
 	}
 }

@@ -31,8 +31,8 @@
 
           <form id="custom-search-form" class="form-search form-horizontal pull-right">
               <div class="input-append span12">
-                  <input type="text" class="search-query" placeholder="Search">
-                  <button type="submit" class="btn"><i class="icon-search"></i></button>
+                  <input name="search" type="text" id="search-query" placeholder="Search">
+                  <button id="search-tablena" type="submit" class="btn"><i class="icon-search"></i></button>
               </div>
           </form>
 
@@ -59,7 +59,8 @@
                                     @foreach ($value['roles'] as $data => $subdata)
                                     <td>{{$subdata['name']}}</td>
                                     @endforeach
-                                    <td class="text-center"><button id="bawadata" type="submit" class='btn btn-info btn-xs' ><span class="glyphicon glyphicon-edit"></span>Edit</button>
+                                    <td class="text-center">
+                                    <button id="get" class='btn btn-info btn-xs' value="{{$value['id']}}"><span class="glyphicon glyphicon-edit"></span>Edit</button>
                                     <button class="btn btn-danger btn-xs" data-toggle="modal" data-target="#deleteModal"><span class="glyphicon glyphicon-remove"></span> Del</button></td>
                                 </tr>
                                 @endforeach
@@ -92,7 +93,7 @@
         <div class="form-group{{ $errors->has('name') ? ' has-error' : '' }}">
             {!! Form::label('name', 'Name', ['class' => 'col-sm-3 control-label']) !!}
             <div class="col-sm-9">
-                {!! Form::text('name', null, ['class' => 'form-control', 'required' => 'required']) !!}
+                {!! Form::text('name', null, ['class' => 'form-control name-model', 'required' => 'required']) !!}
                 <small class="text-danger">{{ $errors->first('name') }}</small>
             </div>
         </div>
@@ -100,29 +101,31 @@
           <div class="form-group{{ $errors->has('email') ? ' has-error' : '' }}">
               {!! Form::label('email', 'Email address', ['class' =>'col-sm-3 control-label']) !!}
               <div class="col-sm-9">
-                  {!! Form::email('email', null, ['class' => 'form-control', 'required' => 'required', 'placeholder' => 'eg: foo@bar.com']) !!}
+                  {!! Form::email('email', null, ['class' => 'form-control email-model', 'required' => 'required', 'placeholder' => 'eg: foo@bar.com']) !!}
                   <small class="text-danger">{{ $errors->first('email') }}</small>
               </div>
           </div>
+          <div id="passwordna">
           <div class="form-group{{ $errors->has('password') ? ' has-error' : '' }}">
               {!! Form::label('password', 'Password', ['class' => 'col-sm-3 control-label']) !!}
                   <div class="col-sm-9">
-                      {!! Form::password('password', ['class' => 'form-control', 'required' => 'required']) !!}
+                      {!! Form::password('password', ['class' => 'form-control ', 'required' => 'required']) !!}
                       <small class="text-danger">{{ $errors->first('password') }}</small>
                   </div>
           </div>
           <div class="form-group{{ $errors->has('password_confirmation') ? ' has-error' : '' }}">
               {!! Form::label('password_confirmation', 'Password Confimation', ['class' => 'col-sm-3 control-label']) !!}
                   <div class="col-sm-9">
-                      {!! Form::password('password_confirmation', ['class' => 'form-control', 'required' => 'required']) !!}
+                      {!! Form::password('password_confirmation', ['class' => 'form-control ', 'required' => 'required']) !!}
                       <small class="text-danger">{{ $errors->first('password_confirmation') }}</small>
                   </div>
           </div>
+        </div>
           <div class="form-group{{ $errors->has('roles') ? ' has-error' : '' }}">
               {!! Form::label('roles', 'Select Roles', ['class' => 'col-sm-3 control-label']) !!}
               <div class="col-sm-9">
                   {!! Form::select('roles',[$roles[0]->name=>$roles[0]->name,
-                  $roles[1]->name=>$roles[1]->name],$roles[0]->name,['class' => 'form-control', 'required' => 'required']) !!}
+                  $roles[1]->name=>$roles[1]->name],$roles[0]->name,['class' => 'form-control roles-model', 'required' => 'required']) !!}
                   <small class="text-danger">{{ $errors->first('roles') }}</small>
               </div>
           </div>
@@ -131,8 +134,8 @@
       </div>
       <div class="modal-footer">
         <div class="btn-group pull-right">
-            {!! Form::reset("Reset", ['class' => 'btn btn-warning']) !!}
-            {!! Form::submit("Add", ['class' => 'btn btn-success']) !!}
+            {!! Form::reset("Reset", ['class' => 'btn btn-warning', 'id'=> 'resetna']) !!}
+            {!! Form::submit("Add", ['class' => 'btn btn-success','id'=> 'add-user']) !!}
         </div>
           {!! Form::close() !!}
       </div>
@@ -140,6 +143,14 @@
 
   </div>
 </div>
+
+@if(Session::has('errors'))
+<script type="">
+$(document).ready(function(){
+  $('#myModal').modal({show: true});
+}
+</script>
+@endif
 
 <!-- Modal -->
 <div id="deleteModal" class="modal fade" role="dialog">
@@ -169,12 +180,16 @@
 
   </div>
 </div>
+<div id="the-return">
+  [HTML is replaced when successful.]
+</div>
 @endsection
 
 @section('script')
+
   <!-- DataTables JavaScript -->
   <script src="{{ asset('assets/startmin/js/dataTables/jquery.dataTables.min.js') }}"></script>
   <script src="{{ asset('assets/startmin/js/dataTables/dataTables.bootstrap.min.js') }}"></script>
   {{-- <script src="{{ asset('js/table.js') }}"></script> --}}
-  {{-- <script src="{{ asset('js/table.js') }}"></script> --}}
+  <script src="{{ asset('js/user.js') }}"></script>
 @endsection
